@@ -9,3 +9,54 @@ import matplotlib.pyplot as plt
 #histograma
 dados.hist(column='Age', bins=10)
 plt.show()
+
+#boxplot
+dados.boxplot(column=['Age','Height', 'Weight'])
+plt.show()
+
+#set aleatório de dados com variação
+import numpy as np
+x1 = np.arange(0,1000,#intervalo 1)
+
+#formas de plot
+plt.plot(x1, x1**2)
+plt.show
+
+import matplotlib.pyplot as plt
+plt.scatter(a,p)
+plt.show()
+
+#excluir NAN
+dados2 = dados.dropna()
+
+#visualizar propriedades dos gráficos
+dados.shape
+
+#matriz com informção nulo
+enulo = dados.isnull()
+faltantes = dados.isnull().sum()
+print(faltantes)
+faltantes_relativo = (dados.isnull().sum() / len(dados['ID'])*100)
+print(faltantes_relativo)
+dados['Medal'].fillna('Nenhuma', inplace = True)
+dados['Age'].fillna(dados['Age'].mean(), inplace = True)
+
+#alterando informações
+arquivo['style'] = arquivo['style'].replace('white',1)
+
+#separar as variáveis entre preditoras e alvo
+y = arquivo['style']
+x = arquivo.drop('style', axis=1)
+
+#criando os conjuntos de dados de treino e teste:
+from sklearn.model_selection import train_test_split
+x_treino, x_teste, y_treino, y_teste = train_test_split(x,y, test_size = 0.3)
+
+from sklearn.ensemble import ExtraTreesClassifier
+
+#Criação do Modelo
+modelo = ExtraTreesClassifier(n_estimators=1000)
+modelo.fit(x_treino, y_treino)
+resultado = modelo.score(x_teste, y_teste)
+print("Acurácia:", resultado)
+
