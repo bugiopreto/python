@@ -1,0 +1,11 @@
+#pandas
+import pandas as pd
+dados = pd.read_csv('C:/Users/dsfdo/Desktop/Python/athlete_events.csv')
+dados.head()
+
+#biblioteca de gráficos
+import matplotlib.pyplot as plt
+
+#histograma
+dados.hist(column='Age', bins=10)
+plt.show()
